@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blood"
+    tools:context=".DonorDateAndTimeActivity">
+
+    <LinearLayout
+        android:background="@color/blood"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/cairo_blood"
+                    android:text="برجاء اختيار التاريخ"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textColor="@color/blood"
+                    android:textSize="@dimen/_18ssp"
+                    android:gravity="start"
+                    android:textStyle="bold"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <DatePicker
+                    android:calendarTextColor="@color/white"
+                    android:yearListSelectorColor="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:datePickerMode="spinner"
+                    android:calendarViewShown="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_margin="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/cairo_blood"
+                    android:text="برجاء اختيار الوقت"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:textColor="@color/blood"
+                    android:textSize="@dimen/_18ssp"
+                    android:gravity="start"
+                    android:textStyle="bold"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <TimePicker
+                    android:timePickerMode="spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:onClick="submitDateAndTime"
+            android:fontFamily="@font/cairo_blood"
+            android:background="@drawable/btn_shape"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_50sdp"
+            android:textColor="@color/blood"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="@dimen/_18ssp"
+            android:padding="@dimen/_3sdp"
+            android:layout_width="match_parent"
+            android:text="تسجيل"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
