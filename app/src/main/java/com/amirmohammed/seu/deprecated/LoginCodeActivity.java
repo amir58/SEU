@@ -1,10 +1,13 @@
-package com.amirmohammed.seu;
+package com.amirmohammed.seu.deprecated;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.amirmohammed.seu.MainActivity;
+import com.amirmohammed.seu.R;
 
 public class LoginCodeActivity extends AppCompatActivity {
 

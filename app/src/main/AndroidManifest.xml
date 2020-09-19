@@ -19,8 +19,8 @@
         <activity android:name=".DonorDataActivity" />
         <activity android:name=".SignUpCodeActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginCodeActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".deprecated.LoginCodeActivity" />
+        <activity android:name=".deprecated.LoginActivity" />
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme"
             android:label="@string/app_name"/>
