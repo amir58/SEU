@@ -16,18 +16,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-    FirebaseAuth auth = FirebaseAuth.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Log.i(TAG, "onCreate: AMIR : " + auth.getCurrentUser().getUid());
-
     }
-
 
     public void goToDonorActivity(View view) {
         startActivity(new Intent(MainActivity.this, DonorDataActivity.class));

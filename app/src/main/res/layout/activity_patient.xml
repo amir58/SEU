@@ -33,6 +33,8 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:maxLines="1"
+                android:id="@+id/patient_et_id"
                 android:background="@drawable/edit_text_shape"
                 android:padding="@dimen/_10sdp"
                 android:hint="X X X X"
