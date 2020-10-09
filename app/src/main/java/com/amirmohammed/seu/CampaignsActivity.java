@@ -34,7 +34,6 @@ public class CampaignsActivity extends AppCompatActivity {
     String letterUrl = "";
     EditText editTextLocation;
 
-
     ProgressDialog progressDialog;
 
 
@@ -63,14 +62,17 @@ public class CampaignsActivity extends AppCompatActivity {
             return;
         }
 
+
+
         if (letterUrl.isEmpty()) {
             Toast.makeText(this, "برجاء ارفاق الخطاب", Toast.LENGTH_SHORT).show();
             return;
         }
-
         Map<String, String> campaignData = new HashMap<>();
         campaignData.put("letterUrl", letterUrl);
         campaignData.put("location", location);
+        campaignData.put("date", getIntent().getStringExtra("date"));
+        campaignData.put("time", getIntent().getStringExtra("time"));
 
         firestore.collection("letters").document(auth.getUid())
                 .set(campaignData).addOnCompleteListener(new OnCompleteListener<Void>() {

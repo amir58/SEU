@@ -18,14 +18,17 @@ public class DonorTypeActivity extends AppCompatActivity {
     }
 
     public void blood(View view) {
-        intent.putExtra("type", "blood");
+//        intent.putExtra("type", "blood");
+        MainActivity.donorData.setType("blood");
         startActivity(intent);
         finish();
     }
 
     public void platelets(View view) {
-        intent.putExtra("type", "platelets");
+//        intent.putExtra("type", "platelets");
+        MainActivity.donorData.setType("platelets");
         startActivity(intent);
         finish();
     }
+
 }

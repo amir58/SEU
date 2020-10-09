@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(3000);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -32,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
                                 startActivity(intent,
                                         ActivityOptions.makeSceneTransitionAnimation
                                                 (SplashActivity.this).toBundle());
+                                finish();
 
                             } else {
                                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
