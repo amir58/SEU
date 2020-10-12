@@ -178,8 +178,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
         String questionNumber = "السؤال " + (questionCounter + 1) + " / " + questions.size();
 
-
         textViewQuestionNumber.setText(questionNumber);
 
     }
+
 }

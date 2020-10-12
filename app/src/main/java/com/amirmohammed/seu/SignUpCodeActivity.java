@@ -23,7 +23,6 @@ public class SignUpCodeActivity extends AppCompatActivity {
     EditText editTextSmsCode;
     PhoneAuthCredential credential;
     FirebaseAuth auth = FirebaseAuth.getInstance();
-    private static final String TAG = "SignUpCodeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,8 @@ public class SignUpCodeActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(SignUpCodeActivity.this, MainActivity.class));
+                            Intent intent = new Intent(SignUpCodeActivity.this, MainActivity.class);
+                            startActivity(intent);
                             finish();
                         }
                     }

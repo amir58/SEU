@@ -24,26 +24,17 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(3000);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
                             if (auth.getCurrentUser() == null) {
                                 Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
-                                startActivity(intent,
-                                        ActivityOptions.makeSceneTransitionAnimation
-                                                (SplashActivity.this).toBundle());
+                                startActivity(intent);
                                 finish();
 
                             } else {
                                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                                startActivity(intent,
-                                        ActivityOptions.makeSceneTransitionAnimation
-                                                (SplashActivity.this).toBundle());
+                                startActivity(intent);
+                                finish();
 
                             }
-
-                        }
-                    });
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
