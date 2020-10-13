@@ -1,4 +1,4 @@
-package com.amirmohammed.seu;
+package com.example.seu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,12 +1,9 @@
-package com.amirmohammed.seu;
+package com.example.seu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Explode;
-import android.view.Window;
 
 import com.google.firebase.auth.FirebaseAuth;
 

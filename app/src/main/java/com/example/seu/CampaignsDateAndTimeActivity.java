@@ -1,4 +1,4 @@
-package com.amirmohammed.seu;
+package com.example.seu;
 
 import android.content.Intent;
 import android.os.Build;

@@ -1,4 +1,4 @@
-package com.amirmohammed.seu;
+package com.example.seu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,10 +36,10 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        String phoneNumberWithCode = "+966" + phoneNumberInput;
+//        String phoneNumberWithCode = "+966" + phoneNumberInput;
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNumberWithCode,        // Phone number to verify
+                phoneNumberInput,        // Phone number to verify
                 60,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
