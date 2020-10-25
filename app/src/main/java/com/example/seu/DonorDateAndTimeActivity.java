@@ -58,11 +58,19 @@ public class DonorDateAndTimeActivity extends AppCompatActivity {
 
                             Toast.makeText(DonorDateAndTimeActivity.this
                                     , "تم التسجيل", Toast.LENGTH_SHORT).show();
-                            finish();
+
+                            closeAllActivities();
 
                         }
                     }
                 });
+    }
+
+    private void closeAllActivities() {
+        finish();
+        DonorDataActivity.screen.finish();
+        QuestionnaireActivity.screen.finish();;
+        DonorTypeActivity.screen.finish();
     }
 
 

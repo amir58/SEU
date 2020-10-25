@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
                 this,               // Activity (for callback binding)
                 mCallbacks);        // OnVerificationStateChangedCallbacks
 
+
     }
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks
@@ -52,11 +54,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         @Override
         public void onVerificationCompleted(PhoneAuthCredential credential) {
-            Intent intent = new Intent(SignUpActivity.this, SignUpCodeActivity.class);
-            intent.putExtra("credential", credential);
-            startActivity(intent);
-            finish();
         }
+
         @Override
         public void onVerificationFailed(FirebaseException e) {
             String errorMessage = e.getMessage();
@@ -64,6 +63,17 @@ public class SignUpActivity extends AppCompatActivity {
                     , Toast.LENGTH_LONG).show();
         }
 
+        @Override
+        public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(verificationId, forceResendingToken);
+            SignUpCodeActivity.verificationId = verificationId;
+
+            Intent intent = new Intent(SignUpActivity.this, SignUpCodeActivity.class);
+            startActivity(intent);
+            Log.i(TAG, "onCodeSent: " + verificationId + " | " + forceResendingToken.toString());
+        }
+
     };
 
+    private static final String TAG = "SignUpActivity";
 }

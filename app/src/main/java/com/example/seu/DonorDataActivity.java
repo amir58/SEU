@@ -2,6 +2,7 @@ package com.example.seu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class DonorDataActivity extends AppCompatActivity {
+    public static Activity screen;
 
     private EditText editTextDonorName, editTextDonorDateOfBirth
             , editTextDonorNationality, editTextDonorIdentity;
@@ -17,6 +19,7 @@ public class DonorDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_data);
+        screen = this;
 
         editTextDonorName = findViewById(R.id.donor_data_et_donor_name);
         editTextDonorDateOfBirth = findViewById(R.id.donor_data_et_donor_date_of_birth);
@@ -42,7 +45,7 @@ public class DonorDataActivity extends AppCompatActivity {
         MainActivity.donorData.setIdentity(identity);
 
         startActivity(new Intent(this, QuestionnaireActivity.class));
-        finish();
+//        finish();
     }
 
 

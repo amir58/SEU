@@ -14,11 +14,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 public class SignUpCodeActivity extends AppCompatActivity {
+    public static String verificationId;
 
     EditText editTextSmsCode;
-    PhoneAuthCredential credential;
+
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Override
@@ -28,7 +30,6 @@ public class SignUpCodeActivity extends AppCompatActivity {
 
         editTextSmsCode = findViewById(R.id.sign_up_et_sms_code);
 
-        credential = getIntent().getParcelableExtra("credential");
     }
 
     public void signUp(View view) {
@@ -39,11 +40,9 @@ public class SignUpCodeActivity extends AppCompatActivity {
             return;
         }
 
-        if (inputSmsCode.equals(credential.getSmsCode())) {
-            signInWithPhoneAuthCredential(credential);
-        } else {
-            Toast.makeText(this, "كود التسجيل غير صحيح", Toast.LENGTH_SHORT).show();
-        }
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, inputSmsCode);
+
+        signInWithPhoneAuthCredential(credential);
 
     }
 
@@ -56,8 +55,13 @@ public class SignUpCodeActivity extends AppCompatActivity {
                             Intent intent = new Intent(SignUpCodeActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
+
+                        } else{
+                            String errorMessage = task.getException().getMessage();
+                            Toast.makeText(SignUpCodeActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
+
 }

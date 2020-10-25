@@ -2,6 +2,7 @@ package com.example.seu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionnaireActivity extends AppCompatActivity {
+    public static Activity screen;
+
     TextView textViewQuestionNumber, textViewQuestion;
     RadioGroup radioGroup;
     List<Questionnaire> questions = new ArrayList<>();
@@ -28,6 +31,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire);
+        screen = this;
 
         radioGroup = findViewById(R.id.questionnaire_rg);
         textViewQuestion = findViewById(R.id.questionnaire_tv_question);
@@ -46,7 +50,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
             MainActivity.donorData.setQuestionnaires(questions);
 
             startActivity(new Intent(this, DonorTypeActivity.class));
-            finish();
+//            finish();
             return;
         }
 
