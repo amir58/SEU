@@ -45,8 +45,6 @@
                     android:calendarTextColor="@color/white"
                     android:yearListSelectorColor="@color/white"
                     android:backgroundTint="@color/white"
-                    android:datePickerMode="spinner"
-                    android:calendarViewShown="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 

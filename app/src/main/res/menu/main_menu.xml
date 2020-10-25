@@ -7,6 +7,8 @@
 
     <item android:title="قيم التطبيق" />
 
+    <item android:title="بطاقة التبرع"/>
+
     <item
         android:id="@+id/menu_log_out"
         android:title="تسجيل الخروج" />
