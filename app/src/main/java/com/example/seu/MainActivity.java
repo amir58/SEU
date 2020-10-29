@@ -48,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             finish();
             startActivity(new Intent(MainActivity.this, SignUpCodeActivity.class));
+        } else if (item.getItemId() == R.id.menu_card) {
+            startActivity(new Intent(MainActivity.this, CardActivity.class));
+
+
         } else {
             Toast.makeText(this, "قريباً", Toast.LENGTH_SHORT).show();
         }

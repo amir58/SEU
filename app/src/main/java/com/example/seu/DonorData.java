@@ -1,8 +1,9 @@
 package com.example.seu;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DonorData {
+public class DonorData implements Serializable {
     private String id, name, dateOfBirth, nationality, identity, type, date, time;
     private List<Questionnaire> questionnaires;
 
@@ -92,4 +93,5 @@ public class DonorData {
     public String getIdentity() {
         return identity;
     }
+
 }
