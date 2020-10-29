@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, CardActivity.class));
 
 
+        } else if (item.getItemId() == R.id.menu_rate_app) {
+            startActivity(new Intent(MainActivity.this, RateAppActivity.class));
+
+
         } else {
             Toast.makeText(this, "قريباً", Toast.LENGTH_SHORT).show();
         }

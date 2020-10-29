@@ -9,28 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoBar">
-        <activity android:name="com.example.seu.PatientDetailsActivity"/>
-        <activity android:name="com.example.seu.PatientActivity" />
-        <activity android:name="com.example.seu.CampaignsActivity" />
-        <activity android:name="com.example.seu.DonorDateAndTimeActivity"
-            android:launchMode="singleInstance"/>
-        <activity android:name="com.example.seu.CampaignsDateAndTimeActivity" />
-        <activity android:name="com.example.seu.DonorTypeActivity"
-            android:launchMode="singleInstance"/>
-        <activity android:name="com.example.seu.QuestionnaireActivity"
-            android:launchMode="singleInstance"/>
-        <activity android:name="com.example.seu.DonorDataActivity"
-            android:launchMode="singleInstance"/>
-        <activity android:name="com.example.seu.SignUpCodeActivity" />
-        <activity android:name="com.example.seu.SignUpActivity" />
-<!--        <activity android:name=".deprecated.LoginCodeActivity" />-->
-<!--        <activity android:name=".deprecated.LoginActivity" />-->
-        <activity android:name="com.example.seu.MainActivity"
-            android:theme="@style/AppTheme"
-            android:label="@string/app_name"/>
-
+        <activity android:name=".RateAppActivity"/>
+        <activity android:name=".PatientDetailsActivity" />
+        <activity android:name=".PatientActivity" />
+        <activity android:name=".CampaignsActivity" />
         <activity
-            android:name="com.example.seu.SplashActivity"
+            android:name=".DonorDateAndTimeActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".CampaignsDateAndTimeActivity" />
+        <activity
+            android:name=".DonorTypeActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".QuestionnaireActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".DonorDataActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".SignUpCodeActivity" />
+        <activity android:name=".SignUpActivity" /> <!-- <activity android:name=".deprecated.LoginCodeActivity" /> -->
+        <!-- <activity android:name=".deprecated.LoginActivity" /> -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/AppThemeNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,9 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".CardActivity"/>
-        <activity android:name=".CardDetailsActivity"/>
+        <activity android:name=".CardActivity" />
+        <activity android:name=".CardDetailsActivity" />
     </application>
 
 </manifest>
