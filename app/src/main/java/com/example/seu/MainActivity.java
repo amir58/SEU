@@ -56,13 +56,25 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, RateAppActivity.class));
 
 
-        } else {
-            Toast.makeText(this, "قريباً", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.menu_share_app) {
+            shareApp();
+        } else if (item.getItemId() == R.id.menu_about_us){
+            startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+
+    private void shareApp() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+        String shareMessage= "\nانصحك بتجربة تطبيق قطرة امل الذى يساعدك على التبرع بالدم بسهولة\n\n";
+        shareMessage = shareMessage + "https://drive.google.com/drive/folders/1DyRbwnE6IqX2uMoZ7jyYBN9Lbmqb-Owg?usp=sharing" +"\n\n";
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+        startActivity(Intent.createChooser(shareIntent, "choose one"));
+    }
 }
 
 
