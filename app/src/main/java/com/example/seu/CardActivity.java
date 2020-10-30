@@ -32,27 +32,6 @@ public class CardActivity extends AppCompatActivity {
 
     }
 
-    private void getPatientData(final String patientId) {
-        firestore.collection("patients")
-                .document(patientId)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        Patient patient = task.getResult().toObject(Patient.class);
-
-                        if (patient == null) {
-                            Toast.makeText(CardActivity.this, "لم نجد الملف", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        Intent intent = new Intent(CardActivity.this, PatientDetailsActivity.class);
-                        intent.putExtra("patientData", patient);
-                        startActivity(intent);
-                        finish();
-
-                    }
-                });
-    }
 
     public void showCardData(View view) {
         String donorIdentity = editTextDonorIdentity.getText().toString();

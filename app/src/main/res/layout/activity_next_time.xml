@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DonorDataActivity">
+    tools:context=".NextTimeActivity">
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="@dimen/_15sdp"
@@ -23,8 +23,9 @@
 
             <TextView
                 android:fontFamily="@font/cairo_blood"
-                android:text="بيانات المتبرع"
-                android:layout_margin="@dimen/_10sdp"
+                android:text="ميعاد تبرعك القادم"
+                android:id="@+id/next_time_type_tv"
+                android:layout_margin="@dimen/_5sdp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_22ssp"
                 android:gravity="center"
@@ -32,51 +33,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <EditText
-                android:id="@+id/donor_data_et_donor_name"
-                android:background="@drawable/edit_text_shape"
-                android:padding="@dimen/_10sdp"
-                android:hint="اسم المتبرع"
+            <TextView
+                android:id="@+id/next_time_tv"
+                android:fontFamily="@font/cairo_blood"
                 android:layout_margin="@dimen/_5sdp"
-                android:inputType="text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp"
+                android:gravity="center"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
-            <EditText
-                android:id="@+id/donor_data_et_donor_date_of_birth"
-                android:background="@drawable/edit_text_shape"
-                android:padding="@dimen/_10sdp"
-                android:hint="سنة الميلاد"
-                android:layout_margin="@dimen/_5sdp"
-                android:inputType="text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/donor_data_et_donor_nationality"
-                android:background="@drawable/edit_text_shape"
-                android:padding="@dimen/_10sdp"
-                android:hint="الجنسية"
-                android:layout_margin="@dimen/_5sdp"
-                android:inputType="text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/donor_data_et_donor_identity"
-                android:background="@drawable/edit_text_shape"
-                android:padding="@dimen/_10sdp"
-                android:hint="الهوية"
-                android:layout_margin="@dimen/_5sdp"
-                android:inputType="number"
-                android:maxLength="10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
             <Button
+                android:onClick="back"
                 android:fontFamily="@font/cairo_blood"
                 android:background="@drawable/btn_shape"
-                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_50sdp"
@@ -84,12 +57,10 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textSize="@dimen/_18ssp"
-                android:onClick="pushDonorData"
                 android:padding="@dimen/_3sdp"
                 android:layout_width="match_parent"
-                android:text="تسجيل"
+                android:text="رجوع"
                 android:layout_height="wrap_content"/>
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

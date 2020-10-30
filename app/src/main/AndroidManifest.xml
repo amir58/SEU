@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoBar">
-        <activity android:name=".BloodTypeInfoActivity"></activity>
+        <activity android:name=".NextTimeActivity"></activity>
+        <activity android:name=".BloodTypeInfoActivity" />
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".RateAppActivity" />
         <activity android:name=".PatientDetailsActivity" />

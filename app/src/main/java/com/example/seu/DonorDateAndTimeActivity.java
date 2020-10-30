@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -81,7 +82,7 @@ public class DonorDateAndTimeActivity extends AppCompatActivity {
     }
 
     private void uploadDonorData() {
-        String donorId = String.valueOf(System.currentTimeMillis());
+        final String donorId = String.valueOf(System.currentTimeMillis());
         MainActivity.donorData.setId(donorId);
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
@@ -99,9 +100,27 @@ public class DonorDateAndTimeActivity extends AppCompatActivity {
 
                             closeAllActivities();
 
+                            openNextTimeActivity();
                         }
                     }
                 });
+    }
+
+    private void openNextTimeActivity() {
+        Intent intent = new Intent(this, NextTimeActivity.class);
+        intent.putExtra("donorDate", getDateFromDatePicker(datePicker));
+        startActivity(intent);
+    }
+
+    private Long getDateFromDatePicker(DatePicker datePicker){
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+
+        return calendar.getTimeInMillis();
     }
 
     private void closeAllActivities() {
