@@ -6,8 +6,9 @@ import java.util.List;
 public class DonorData implements Serializable {
     private String id, name, dateOfBirth, nationality, identity, type, date, time;
     private List<Questionnaire> questionnaires;
+    private String bloodType;
 
-    public DonorData(String id, String name, String dateOfBirth, String nationality, String identity, String type, String date, String time, List<Questionnaire> questionnaires) {
+    public DonorData(String id, String name, String dateOfBirth, String nationality, String identity, String type, String date, String time, List<Questionnaire> questionnaires, String bloodType) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -17,9 +18,18 @@ public class DonorData implements Serializable {
         this.date = date;
         this.time = time;
         this.questionnaires = questionnaires;
+        this.bloodType = bloodType;
     }
 
     DonorData() {
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
     }
 
     public String getId() {

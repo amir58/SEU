@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.menu_log_out) {
             FirebaseAuth.getInstance().signOut();
             finish();
-            startActivity(new Intent(MainActivity.this, SignUpCodeActivity.class));
+            startActivity(new Intent(MainActivity.this, SignUpActivity.class));
         } else if (item.getItemId() == R.id.menu_card) {
             startActivity(new Intent(MainActivity.this, CardActivity.class));
 
@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.menu_about_us){
             startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
         }
+        else if (item.getItemId() == R.id.menu_blood_type){
+            startActivity(new Intent(MainActivity.this, BloodTypeInfoActivity.class));
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

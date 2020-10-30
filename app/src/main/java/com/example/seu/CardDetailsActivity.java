@@ -26,7 +26,7 @@ public class CardDetailsActivity extends AppCompatActivity {
         }
 
         textViewDonorName.append(donorData.getName());
-        textViewDonorBloodType.append(donorData.getType());
+        textViewDonorBloodType.append(donorData.getBloodType());
 
         textViewDonorCount.append("" + donorCount);
 

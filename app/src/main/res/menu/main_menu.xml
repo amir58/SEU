@@ -15,7 +15,11 @@
 
     <item
         android:id="@+id/menu_card"
-        android:title="بطاقة التبرع"/>
+        android:title="بطاقة التبرع" />
+
+    <item
+        android:id="@+id/menu_blood_type"
+        android:title="فصيلتك من تعطي" />
 
     <item
         android:id="@+id/menu_log_out"

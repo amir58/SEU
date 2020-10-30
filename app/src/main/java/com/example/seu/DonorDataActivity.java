@@ -43,9 +43,11 @@ public class DonorDataActivity extends AppCompatActivity {
         MainActivity.donorData.setDateOfBirth(dateOfBirth);
         MainActivity.donorData.setNationality(nationality);
         MainActivity.donorData.setIdentity(identity);
+        MainActivity.donorData.setBloodType("تحت المراجعة");
 
         startActivity(new Intent(this, QuestionnaireActivity.class));
 //        finish();
+
     }
 
 
