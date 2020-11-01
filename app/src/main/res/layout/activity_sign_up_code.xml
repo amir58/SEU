@@ -28,7 +28,7 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_blood"
                 android:gravity="center"
-                android:text="تم ارسال كود التاكيد الى هاتفك"
+                android:text="تم ارسال رمز التحقق الى هاتفك"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_17ssp"
                 android:textStyle="bold" />

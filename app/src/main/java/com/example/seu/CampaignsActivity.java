@@ -61,8 +61,6 @@ public class CampaignsActivity extends AppCompatActivity {
             return;
         }
 
-
-
         if (letterUrl.isEmpty()) {
             Toast.makeText(this, "برجاء ارفاق الخطاب", Toast.LENGTH_SHORT).show();
             return;

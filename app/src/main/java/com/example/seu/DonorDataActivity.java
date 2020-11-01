@@ -39,6 +39,10 @@ public class DonorDataActivity extends AppCompatActivity {
             return;
         }
 
+        if (identity.length() < 10) {
+            Toast.makeText(screen, "رقم الهوية يجب ان يكون 10 ارقام", Toast.LENGTH_SHORT).show();
+        }
+
         MainActivity.donorData.setName(name);
         MainActivity.donorData.setDateOfBirth(dateOfBirth);
         MainActivity.donorData.setNationality(nationality);

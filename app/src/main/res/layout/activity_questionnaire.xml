@@ -92,7 +92,25 @@
                 android:gravity="center"
                 android:onClick="nextQuestion"
                 android:padding="@dimen/_3sdp"
-                android:text="التالي"
+                android:text="السؤال التالى"
+                android:textColor="@color/blood"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_50sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/btn_shape"
+                android:fontFamily="@font/cairo_blood"
+                android:gravity="center"
+                android:onClick="previousQuestion"
+                android:padding="@dimen/_3sdp"
+                android:text="السؤال السابق"
                 android:textColor="@color/blood"
                 android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />

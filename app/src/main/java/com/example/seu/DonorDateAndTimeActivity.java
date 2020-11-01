@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.PrintStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,37 +35,55 @@ public class DonorDateAndTimeActivity extends AppCompatActivity {
 
         datePicker.setMinDate(System.currentTimeMillis());
 
+
+        timeChange();
+        dateChange();
+
+    }
+
+    private void timeChange() {
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker timePicker, int hourOfDay, int i1) {
                 if(hourOfDay < 8 || hourOfDay > 23) {
-                    timePicker.setHour(8);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        timePicker.setHour(8);
+                    }
                     Toast.makeText(DonorDateAndTimeActivity.this,
                             "مواعيد العمل : 8 صباحاً حتى 11 مساءاً", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
+    }
 
-        datePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-            @Override
-            public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
-                Date date = new Date(year, month + 1, day);
+    private void dateChange() {
 
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(date);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            datePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
+                    Date date = new Date(year, month, (day - 1));
 
-                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(date);
 
-                if (dayOfWeek == 3 || dayOfWeek == 4) {
-                    Toast.makeText(DonorDateAndTimeActivity.this, "يومى الجمعة و السبت ", Toast.LENGTH_SHORT).show();
+                    int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
-                    datePicker.init(year, month, calendar.getFirstDayOfWeek(), this);
+                    switch (dayOfWeek) {
+                        case Calendar.FRIDAY:
+                            Toast.makeText(DonorDateAndTimeActivity.this, "يوم الجمعة اجازة", Toast.LENGTH_SHORT).show();
+                            datePicker.init(year, month, calendar.getFirstDayOfWeek(), this);
+                            break;
+
+                        case Calendar.SATURDAY:
+                            Toast.makeText(DonorDateAndTimeActivity.this, "يوم السبت اجازة", Toast.LENGTH_SHORT).show();
+                            datePicker.init(year, month, calendar.getFirstDayOfWeek(), this);
+                            break;
+                    }
                 }
-
-            }
-        });
-
+            });
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

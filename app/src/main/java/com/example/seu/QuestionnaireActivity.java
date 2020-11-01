@@ -183,4 +183,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     }
 
+    public void previousQuestion(View view) {
+        if (questionCounter > 0) {
+
+            questionCounter--;
+            setQuestionData();
+        }
+    }
 }

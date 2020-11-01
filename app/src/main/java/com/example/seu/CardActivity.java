@@ -37,7 +37,7 @@ public class CardActivity extends AppCompatActivity {
         String donorIdentity = editTextDonorIdentity.getText().toString();
 
         if (donorIdentity.isEmpty() || donorIdentity.length() < 10) {
-            Toast.makeText(this, "برجاء كتابة رقم الهوية", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "رقم الهوية يجب ان يكون 10 ارقام", Toast.LENGTH_LONG).show();
             return;
         }
 

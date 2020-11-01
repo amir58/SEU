@@ -1,6 +1,7 @@
 package com.example.seu;
 
 import android.content.Intent;
+import android.icu.util.LocaleData;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +13,12 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class CampaignsDateAndTimeActivity extends AppCompatActivity {
     DatePicker datePicker;
@@ -29,11 +34,16 @@ public class CampaignsDateAndTimeActivity extends AppCompatActivity {
 
         datePicker.setMinDate(System.currentTimeMillis());
 
+        timeChange();
+        dateChange();
+    }
+
+    private void timeChange() {
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onTimeChanged(TimePicker timePicker, int hourOfDay, int i1) {
-                if(hourOfDay < 8 || hourOfDay > 23) {
+                if (hourOfDay < 8 || hourOfDay > 23) {
                     timePicker.setHour(8);
                     Toast.makeText(CampaignsDateAndTimeActivity.this,
                             "مواعيد العمل : 8 صباحاً حتى 11 مساءاً", Toast.LENGTH_SHORT).show();
@@ -42,26 +52,47 @@ public class CampaignsDateAndTimeActivity extends AppCompatActivity {
             }
         });
 
-        datePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-            @Override
-            public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
-                Date date = new Date(year, month + 1, day);
-
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(date);
-
-                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-
-                if (dayOfWeek == 3 || dayOfWeek == 4) {
-                    Toast.makeText(CampaignsDateAndTimeActivity.this, "يومى الجمعة و السبت ", Toast.LENGTH_SHORT).show();
-
-                    datePicker.init(year, month, calendar.getFirstDayOfWeek(), this);
-                }
-
-            }
-        });
     }
 
+
+    private void dateChange() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            datePicker.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
+                    Date date = new Date(year, month, (day - 1));
+
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(date);
+
+                    int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+                    switch (dayOfWeek) {
+                        case Calendar.FRIDAY:
+                            Toast.makeText(CampaignsDateAndTimeActivity.this, "يوم الجمعة اجازة", Toast.LENGTH_SHORT).show();
+                            datePicker.init(year, month, calendar.getFirstDayOfWeek(), this);
+                            break;
+
+                        case Calendar.SATURDAY:
+                            Toast.makeText(CampaignsDateAndTimeActivity.this, "يوم السبت اجازة", Toast.LENGTH_SHORT).show();
+                            datePicker.init(year, month, calendar.getFirstDayOfWeek(), this);
+                            break;
+                    }
+
+//                    Format simpleDateFormat = new SimpleDateFormat("EEE, dd/MM/yyyy");
+//                    String dayOfWeek = simpleDateFormat.format(calendar.getTime());
+//                    String test = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
+//                    Log.i(TAG, "onDateChanged: " + test);
+//                    Log.i(TAG, "onDateChanged: " + dayOfWeek);
+
+//                    if (dayOfWeek == "" || dayOfWeek == "") {
+//
+//                    }
+
+                }
+            });
+        }
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void submitDateAndTime(View view) {
