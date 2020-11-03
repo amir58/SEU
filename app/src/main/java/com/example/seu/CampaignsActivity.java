@@ -57,12 +57,12 @@ public class CampaignsActivity extends AppCompatActivity {
         String location = editTextLocation.getText().toString();
 
         if (location.isEmpty()) {
-            Toast.makeText(this, "برجاء كتابة الموقع", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "حدد الموقع", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (letterUrl.isEmpty()) {
-            Toast.makeText(this, "برجاء ارفاق الخطاب", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ارفق الخطاب", Toast.LENGTH_SHORT).show();
             return;
         }
         Map<String, String> campaignData = new HashMap<>();

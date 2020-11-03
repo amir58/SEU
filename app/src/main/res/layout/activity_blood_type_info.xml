@@ -1,68 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BloodTypeInfoActivity">
 
-    <androidx.cardview.widget.CardView
-        app:cardCornerRadius="@dimen/_15sdp"
-        android:layout_margin="@dimen/_10sdp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:padding="@dimen/_10sdp"
-            android:background="@color/blood"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:fontFamily="@font/cairo_blood"
-                android:text="فصيلتك من تعطى"
-                android:layout_margin="@dimen/_5sdp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_22ssp"
-                android:gravity="center"
-                android:textStyle="bold"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@color/blood"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
-            <TextView
-                android:id="@+id/blood_type_info_tv"
-                android:fontFamily="@font/cairo_blood"
-                android:layout_margin="@dimen/_5sdp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12ssp"
-                android:gravity="right"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:fontFamily="@font/cairo_blood"
+                    android:gravity="center"
+                    android:text="فصيلتك من تعطى"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_22ssp"
+                    android:textStyle="bold" />
 
-
-            <Button
-                android:onClick="back"
-                android:fontFamily="@font/cairo_blood"
-                android:background="@drawable/btn_shape"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_50sdp"
-                android:layout_marginEnd="@dimen/_50sdp"
-                android:textColor="@color/blood"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textSize="@dimen/_18ssp"
-                android:padding="@dimen/_3sdp"
-                android:layout_width="match_parent"
-                android:text="رجوع"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/blood_type_info_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_300sdp"
+                    android:fontFamily="@font/cairo_blood"
+                    android:gravity="right"
+                    android:src="@drawable/blood_info"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_50sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/btn_shape"
+                    android:fontFamily="@font/cairo_blood"
+                    android:gravity="center"
+                    android:onClick="back"
+                    android:padding="@dimen/_3sdp"
+                    android:text="رجوع"
+                    android:textColor="@color/blood"
+                    android:textSize="@dimen/_18ssp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

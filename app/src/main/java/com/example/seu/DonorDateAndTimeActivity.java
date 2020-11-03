@@ -72,12 +72,8 @@ public class DonorDateAndTimeActivity extends AppCompatActivity {
 
                     switch (dayOfWeek) {
                         case Calendar.FRIDAY:
-                            Toast.makeText(DonorDateAndTimeActivity.this, "يوم الجمعة اجازة", Toast.LENGTH_SHORT).show();
-                            datePicker.init(year, month, calendar.getFirstDayOfWeek(), this);
-                            break;
-
                         case Calendar.SATURDAY:
-                            Toast.makeText(DonorDateAndTimeActivity.this, "يوم السبت اجازة", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DonorDateAndTimeActivity.this, "غير متاح", Toast.LENGTH_SHORT).show();
                             datePicker.init(year, month, calendar.getFirstDayOfWeek(), this);
                             break;
                     }
