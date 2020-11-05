@@ -19,6 +19,7 @@ public class CardDetailsActivity extends AppCompatActivity {
         textViewDonorCount = findViewById(R.id.card_details_donor_count);
 
         DonorData donorData = (DonorData) getIntent().getSerializableExtra("donorData");
+
         int donorCount = getIntent().getIntExtra("donorCount", 0);
 
         if (donorData == null) {

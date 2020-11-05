@@ -36,12 +36,12 @@ public class RateAppActivity extends AppCompatActivity {
         float rating = ratingBar.getRating();
 
         if (name.isEmpty()) {
-            Toast.makeText(this, "برجاء كتابة الاسم", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, " اكتب الاسم", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (rating <= 0) {
-            Toast.makeText(this, "برجاء تقييم التطبيق", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "قيم التطبيق", Toast.LENGTH_SHORT).show();
             return;
         }
 

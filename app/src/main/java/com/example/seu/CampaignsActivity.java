@@ -25,7 +25,6 @@ import java.util.Map;
 
 public class CampaignsActivity extends AppCompatActivity {
 
-    private static final String TAG = "CampaignsActivity";
     StorageReference storage = FirebaseStorage.getInstance().getReference();
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();

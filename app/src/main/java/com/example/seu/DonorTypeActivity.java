@@ -22,7 +22,6 @@ public class DonorTypeActivity extends AppCompatActivity {
     }
 
     public void blood(View view) {
-//        intent.putExtra("type", "blood");
         MainActivity.donorData.setType("blood");
         startActivity(intent);
 //        finish();

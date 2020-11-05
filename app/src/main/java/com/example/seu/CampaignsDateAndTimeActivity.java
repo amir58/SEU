@@ -75,16 +75,6 @@ public class CampaignsDateAndTimeActivity extends AppCompatActivity {
                             break;
                     }
 
-//                    Format simpleDateFormat = new SimpleDateFormat("EEE, dd/MM/yyyy");
-//                    String dayOfWeek = simpleDateFormat.format(calendar.getTime());
-//                    String test = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
-//                    Log.i(TAG, "onDateChanged: " + test);
-//                    Log.i(TAG, "onDateChanged: " + dayOfWeek);
-
-//                    if (dayOfWeek == "" || dayOfWeek == "") {
-//
-//                    }
-
                 }
             });
         }

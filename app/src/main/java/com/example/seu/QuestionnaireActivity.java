@@ -25,8 +25,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     int questionCounter = 0;
 
-    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

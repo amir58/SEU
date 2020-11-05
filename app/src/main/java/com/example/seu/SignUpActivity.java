@@ -37,15 +37,12 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-//        String phoneNumberWithCode = "+966" + phoneNumberInput;
-
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumberInput,        // Phone number to verify
                 60,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
                 mCallbacks);        // OnVerificationStateChangedCallbacks
-
 
     }
 

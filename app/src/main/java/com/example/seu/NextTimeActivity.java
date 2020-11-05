@@ -12,7 +12,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class NextTimeActivity extends AppCompatActivity {
-    private static final String TAG = "NextTimeActivity";
     TextView textViewNextTime;
     TextView textViewNextTimeType;
 
