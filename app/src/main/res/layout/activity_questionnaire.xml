@@ -31,7 +31,7 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:fontFamily="@font/cairo_blood"
                 android:gravity="center"
-                android:text="السؤال 1 / 20"
+                android:text="السؤال 1 / 31"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_22ssp"
                 android:textStyle="bold" />

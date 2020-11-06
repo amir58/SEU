@@ -31,7 +31,7 @@ public class DonorTypeActivity extends AppCompatActivity {
 //        intent.putExtra("type", "platelets");
         MainActivity.donorData.setType("platelets");
         startActivity(intent);
-        finish();
+//        finish();
     }
 
 }

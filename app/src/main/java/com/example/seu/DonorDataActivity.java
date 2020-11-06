@@ -35,7 +35,7 @@ public class DonorDataActivity extends AppCompatActivity {
         String identity = editTextDonorIdentity.getText().toString();
 
         if (name.isEmpty() || dateOfBirth.isEmpty() || nationality.isEmpty() || identity.isEmpty()) {
-            Toast.makeText(this, "برجاء كتابة البيانات", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "اكتب البيانات كاملة", Toast.LENGTH_SHORT).show();
             return;
         }
 

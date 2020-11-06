@@ -25,17 +25,17 @@ public class PatientActivity extends AppCompatActivity {
 
         editTextPatientId = findViewById(R.id.patient_et_id);
 
-        Patient patient
-                = new Patient("1", "Nora", "O", "none", "10", "2");
-        firestore.collection("patients").document("1")
-                .set(patient);
+//        Patient patient
+//                = new Patient("1", "Nora", "O", "none", "10", "2");
+//        firestore.collection("patients").document("1")
+//                .set(patient);
     }
 
     public void showPatientData(View view) {
         String patientId = editTextPatientId.getText().toString();
 
         if (patientId.isEmpty()) {
-            Toast.makeText(this, "برجاء كتابة رقم الملف", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "اكتب رقم الملف", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -56,6 +56,7 @@ public class PatientActivity extends AppCompatActivity {
                             Toast.makeText(PatientActivity.this, "لم نجد الملف", Toast.LENGTH_SHORT).show();
                             return;
                         }
+
                         Intent intent = new Intent(PatientActivity.this, PatientDetailsActivity.class);
                         intent.putExtra("patientData", patient);
                         startActivity(intent);

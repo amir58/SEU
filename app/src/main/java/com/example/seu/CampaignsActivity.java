@@ -39,6 +39,7 @@ public class CampaignsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campaigns);
+
         editTextLocation = findViewById(R.id.campaigns_et_location);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("جارى ارفاق الخطاب");
@@ -50,6 +51,46 @@ public class CampaignsActivity extends AppCompatActivity {
         intent.setType("*/*");
         intent.setAction(Intent.ACTION_PICK);
         startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            Uri letterPath = data.getData();
+            uploadFile(letterPath);
+        }
+    }
+
+    private void uploadFile(Uri filePath) {
+        progressDialog.show();
+        storage.child("letters").child(auth.getUid())
+                .putFile(filePath)
+                .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                if (task.isSuccessful()) {
+                    getLetterUrl();
+                } else {
+                    Toast.makeText(CampaignsActivity.this, "فشل ارفاق الخطاب", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private void getLetterUrl() {
+        storage.child("letters").child(auth.getUid())
+                .getDownloadUrl()
+                .addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(CampaignsActivity.this, "تم ارفاق الخطاب بنجاح", Toast.LENGTH_LONG).show();
+                    letterUrl = task.getResult().toString();
+                    progressDialog.dismiss();
+                }
+            }
+        });
     }
 
     public void register(View view) {
@@ -64,6 +105,7 @@ public class CampaignsActivity extends AppCompatActivity {
             Toast.makeText(this, "ارفق الخطاب", Toast.LENGTH_SHORT).show();
             return;
         }
+
         Map<String, String> campaignData = new HashMap<>();
         campaignData.put("letterUrl", letterUrl);
         campaignData.put("location", location);
@@ -82,44 +124,5 @@ public class CampaignsActivity extends AppCompatActivity {
         });
 
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            Uri letterPath = data.getData();
-            uploadFile(letterPath);
-        }
-    }
-
-    private void uploadFile(Uri filePath) {
-        progressDialog.show();
-        storage.child("letters").child(auth.getUid())
-                .putFile(filePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if (task.isSuccessful()) {
-                    getLetterUrl();
-                } else {
-                    Toast.makeText(CampaignsActivity.this, "فشل ارفاق الخطاب", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
-
-    private void getLetterUrl() {
-        storage.child("letters").child(auth.getUid())
-                .getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(CampaignsActivity.this, "تم ارفاق الخطاب بنجاح", Toast.LENGTH_LONG).show();
-                    letterUrl = task.getResult().toString();
-                    progressDialog.dismiss();
-                }
-            }
-        });
-    }
-
 
 }

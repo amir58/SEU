@@ -41,41 +41,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     }
 
-    public void nextQuestion(View view) {
-        if (questionCounter >= questions.size() - 1) {
-            Toast.makeText(this, "انتهت الاسئلة", Toast.LENGTH_SHORT).show();
-
-            MainActivity.donorData.setQuestionnaires(questions);
-
-            startActivity(new Intent(this, DonorTypeActivity.class));
-//            finish();
-            return;
-        }
-
-        String answer = getAnswer();
-
-        if (answer.isEmpty()) {
-            Toast.makeText(this, "برجاء اختيار اجابة", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        questions.get(questionCounter).setAnswer(answer);
-
-        questionCounter++;
-
-        setQuestionData();
-
-    }
-
-    private String getAnswer() {
-        int id = radioGroup.getCheckedRadioButtonId();
-        if (id == -1) {
-            return "";
-        }
-        RadioButton radioButton = findViewById(id);
-        return radioButton.getText().toString();
-    }
-
     private void questionsData() {
         Questionnaire question1 = new Questionnaire("هل انت بصحة جيدة اليوم ؟", "");
         questions.add(question1);
@@ -179,6 +144,41 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
         textViewQuestionNumber.setText(questionNumber);
 
+    }
+
+    public void nextQuestion(View view) {
+        if (questionCounter >= questions.size() - 1) {
+            Toast.makeText(this, "انتهت الاسئلة", Toast.LENGTH_SHORT).show();
+
+            MainActivity.donorData.setQuestionnaires(questions);
+
+            startActivity(new Intent(this, DonorTypeActivity.class));
+//            finish();
+            return;
+        }
+
+        String answer = getAnswer();
+
+        if (answer.isEmpty()) {
+            Toast.makeText(this, "اختر اجابة", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        questions.get(questionCounter).setAnswer(answer);
+
+        questionCounter++;
+
+        setQuestionData();
+
+    }
+
+    private String getAnswer() {
+        int id = radioGroup.getCheckedRadioButtonId();
+        if (id == -1) {
+            return "";
+        }
+        RadioButton radioButton = findViewById(id);
+        return radioButton.getText().toString();
     }
 
     public void previousQuestion(View view) {

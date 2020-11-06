@@ -98,6 +98,7 @@ public class DonorDateAndTimeActivity extends AppCompatActivity {
 
     private void uploadDonorData() {
         final String donorId = String.valueOf(System.currentTimeMillis());
+
         MainActivity.donorData.setId(donorId);
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
