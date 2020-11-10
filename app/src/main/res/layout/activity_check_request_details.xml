@@ -33,7 +33,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-
             <Button
                 android:onClick="deleteRequest"
                 android:fontFamily="@font/cairo_blood"
@@ -48,7 +47,24 @@
                 android:textSize="@dimen/_18ssp"
                 android:padding="@dimen/_3sdp"
                 android:layout_width="match_parent"
-                android:text="عرض"
+                android:text="حذف الطلب"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:onClick="back"
+                android:fontFamily="@font/cairo_blood"
+                android:background="@drawable/btn_shape"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_50sdp"
+                android:textColor="@color/blood"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="@dimen/_18ssp"
+                android:padding="@dimen/_3sdp"
+                android:layout_width="match_parent"
+                android:text="رجوع"
                 android:layout_height="wrap_content"/>
 
 
