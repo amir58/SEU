@@ -18,6 +18,10 @@
         android:title="بطاقة التبرع" />
 
     <item
+        android:id="@+id/menu_check"
+        android:title="حالة تبرعك" />
+
+    <item
         android:id="@+id/menu_blood_type"
         android:title="فصيلتك من تعطي" />
 

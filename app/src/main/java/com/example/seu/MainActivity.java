@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -65,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         else if (item.getItemId() == R.id.menu_blood_type){
             startActivity(new Intent(MainActivity.this, BloodTypeInfoActivity.class));
         }
+
+        else if (item.getItemId() == R.id.menu_check){
+            startActivity(new Intent(MainActivity.this, CheckRequestStateActivity.class));
+        }
+
 
 
         return super.onOptionsItemSelected(item);

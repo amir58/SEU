@@ -42,7 +42,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_300sdp"
                     android:fontFamily="@font/cairo_blood"
-                    android:gravity="right"
                     android:src="@drawable/blood_info"
                     android:textColor="@color/white"
                     android:textStyle="bold" />

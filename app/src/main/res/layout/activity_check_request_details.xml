@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NextTimeActivity">
+    tools:context=".CheckRequestDetailsActivty">
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="@dimen/_15sdp"
@@ -22,10 +22,10 @@
             android:orientation="vertical">
 
             <TextView
+                android:text="حالة الطلب"
+                android:id="@+id/tv_donation_state"
                 android:fontFamily="@font/cairo_blood"
-                android:text="ميعاد تبرعك القادم"
-                android:id="@+id/next_time_type_tv"
-                android:layout_margin="@dimen/_5sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_22ssp"
                 android:gravity="center"
@@ -33,34 +33,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/next_time_tv"
-                android:fontFamily="@font/cairo_blood"
-                android:layout_margin="@dimen/_5sdp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_18ssp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/next_time_tv_donation_id"
-                android:fontFamily="@font/cairo_blood"
-                android:layout_margin="@dimen/_5sdp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_18ssp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
 
             <Button
-                android:onClick="back"
+                android:onClick="deleteRequest"
                 android:fontFamily="@font/cairo_blood"
                 android:background="@drawable/btn_shape"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_25sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_50sdp"
@@ -70,8 +48,9 @@
                 android:textSize="@dimen/_18ssp"
                 android:padding="@dimen/_3sdp"
                 android:layout_width="match_parent"
-                android:text="رجوع"
+                android:text="عرض"
                 android:layout_height="wrap_content"/>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
