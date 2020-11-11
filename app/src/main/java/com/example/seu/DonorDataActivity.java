@@ -9,11 +9,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import javax.annotation.Nullable;
+
 public class DonorDataActivity extends AppCompatActivity {
     public static Activity screen;
+    private static boolean isRunning;
 
-    private EditText editTextDonorName, editTextDonorDateOfBirth
-            , editTextDonorNationality, editTextDonorIdentity;
+    private EditText editTextDonorName, editTextDonorDateOfBirth, editTextDonorNationality, editTextDonorIdentity;
+
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +59,59 @@ public class DonorDataActivity extends AppCompatActivity {
         MainActivity.donorData.setIdentity(identity);
         MainActivity.donorData.setBloodType("تحت المراجعة");
 
-        startActivity(new Intent(this, QuestionnaireActivity.class));
+        checkDonorIdentity();
 //        finish();
+    }
+
+    private void checkDonorIdentity() {
+        firestore.collection("donors")
+                .whereEqualTo("identity", MainActivity.donorData.getIdentity())
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot shots, @Nullable FirebaseFirestoreException e) {
+                        int size = shots.getDocuments().size();
+                        if (size == 0 && isRunning) {
+                            startActivity(new Intent(DonorDataActivity.this, QuestionnaireActivity.class));
+                            return;
+                        }
+
+                        DonorData donorData = shots.getDocuments().get(size - 1).toObject(DonorData.class);
+
+                        long donationDate = Long.parseLong(donorData.getId());
+                        long currentDate = System.currentTimeMillis();
+
+                        if (donorData.isDonationStatus() && isRunning) {
+                            Intent intent = new Intent(DonorDataActivity.this, NextTimeActivity.class);
+                            intent.putExtra("donorDate", donationDate);
+                            MainActivity.donorData.setType(donorData.getType());
+                            MainActivity.donorData.setId(donorData.getId());
+                            startActivity(intent);
+                            return;
+                        }
+
+                        if (donationDate < currentDate && isRunning) {
+                            Toast.makeText(DonorDataActivity.this, "لديك حجز بالفعل تابع حالته", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+
+
+                        startActivity(new Intent(DonorDataActivity.this, QuestionnaireActivity.class));
+                    }
+                });
 
     }
 
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isRunning = false;
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isRunning = true;
+    }
 }
