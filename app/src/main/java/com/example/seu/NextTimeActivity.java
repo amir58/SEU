@@ -13,7 +13,6 @@ import java.util.Date;
 
 public class NextTimeActivity extends AppCompatActivity {
     TextView textViewNextTime;
-    TextView textViewDonationID;
     TextView textViewNextTimeType;
 
     @Override
@@ -22,7 +21,6 @@ public class NextTimeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_next_time);
 
         textViewNextTime = findViewById(R.id.next_time_tv);
-        textViewDonationID = findViewById(R.id.next_time_tv_donation_id);
         textViewNextTimeType = findViewById(R.id.next_time_type_tv);
 
         long donorMillis = getIntent().getLongExtra("donorDate", System.currentTimeMillis());
@@ -50,8 +48,6 @@ public class NextTimeActivity extends AppCompatActivity {
             textViewNextTimeType.setText("تاريخ تبرعك القادم بالصفائح");
 
         }
-
-        textViewDonationID.setText("رقم الطلب \n" + MainActivity.donorData.getId());
     }
 
     public void back(View view) {

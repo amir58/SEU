@@ -44,18 +44,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/next_time_tv_donation_id"
-                android:fontFamily="@font/cairo_blood"
-                android:layout_margin="@dimen/_5sdp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_18ssp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-
             <Button
                 android:onClick="back"
                 android:fontFamily="@font/cairo_blood"

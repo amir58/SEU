@@ -13,7 +13,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import javax.annotation.Nullable;
 
 public class CheckRequestStateActivity extends AppCompatActivity {
     EditText editTextDonationId;
@@ -31,29 +36,30 @@ public class CheckRequestStateActivity extends AppCompatActivity {
     }
 
     public void showCardData(View view) {
-        String donationId = editTextDonationId.getText().toString();
+        String donorIdentity = editTextDonationId.getText().toString();
 
-        if (donationId.isEmpty()) {
-            Toast.makeText(this, "اكتب رقم الطلب", Toast.LENGTH_LONG).show();
+        if (donorIdentity.isEmpty()) {
+            Toast.makeText(this, "اكتب رقم الهوية", Toast.LENGTH_LONG).show();
             return;
         }
 
-        getDonationData(donationId);
+        getDonationData(donorIdentity);
     }
 
-    private void getDonationData(String donationId) {
+    private void getDonationData(String donorIdentity) {
         firestore.collection("donors")
-                .document(donationId)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                .whereEqualTo("identity" , donorIdentity)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        DonorData donorData = task.getResult().toObject(DonorData.class);
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        int size = queryDocumentSnapshots.size();
 
-                        if (donorData == null) {
-                            Toast.makeText(CheckRequestStateActivity.this, "ﻻ يوجد طلب بهذا الرقم", Toast.LENGTH_SHORT).show();
+                        if (size <= 0) {
+                            Toast.makeText(CheckRequestStateActivity.this, "ﻻ يوجد طلب تبرع فى الوقت الحالى", Toast.LENGTH_SHORT).show();
                             return;
                         }
+
+                        DonorData donorData = queryDocumentSnapshots.getDocuments().get(size - 1).toObject(DonorData.class);
 
                         Intent intent = new Intent(CheckRequestStateActivity.this, CheckRequestDetailsActivty.class);
                         intent.putExtra("donorData", donorData);

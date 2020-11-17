@@ -56,7 +56,12 @@ public class CardActivity extends AppCompatActivity {
                         }
 
                         DonorData donorData = queryDocumentSnapshots.getDocuments().get(0).toObject(DonorData.class);
-                        int donorCount = queryDocumentSnapshots.getDocuments().size();
+                        int donorCount = 0;
+
+                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
+                            DonorData donor = documentSnapshot.toObject(DonorData.class);
+                            if (donor.isDonationStatus()) donorCount++;
+                        }
 
                         Intent intent = new Intent(CardActivity.this, CardDetailsActivity.class);
                         intent.putExtra("donorData", donorData);
