@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(3000);
                             if (auth.getCurrentUser() == null) {
-                                Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
+                                Intent intent = new Intent(SplashActivity.this, LoginWithEmailActivity.class);
                                 startActivity(intent);
                                 finish();
 
